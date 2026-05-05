@@ -1,202 +1,144 @@
 # Sales Order Management System
 
-A full-stack web application for managing sales orders, built with Spring Boot backend and React frontend.
+A full-stack web application for managing sales orders with Spring Boot backend and React frontend.
 
-## Project Structure
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-brightgreen)
+![React](https://img.shields.io/badge/React-18-blue)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8)
 
+## ✨ Features
+
+- 📝 Create and manage sales orders
+- 👥 Customer management with auto-populated addresses
+- 📦 Product/item catalog
+- 💰 Automatic tax and total calculations
+- 🔄 Real-time updates with Redux state management
+- 📱 Responsive design with Tailwind CSS
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Java 17+
+- Maven 3.6+
+- Node.js 18+
+- MySQL (XAMPP recommended)
+
+### 1️⃣ Database Setup
+
+Start MySQL and create database:
+
+```sql
+CREATE DATABASE SalesOrderDB;
+USE SalesOrderDB;
 ```
-sales-order-app/
-├── backend/                 # Spring Boot application
-│   ├── src/
-│   │   └── main/
-│   │       ├── java/com/spil/salesorder/
-│   │       │   ├── controller/      # REST Controllers
-│   │       │   ├── service/         # Business Logic
-│   │       │   ├── repository/      # Data Access Layer
-│   │       │   ├── domain/entity/   # JPA Entities
-│   │       │   ├── dto/             # Data Transfer Objects
-│   │       │   └── config/          # Configuration Classes
-│   │       └── resources/
-│   │           └── application.properties
-│   ├── pom.xml
-│   └── database-schema.sql
-│
-└── frontend/                # React application
-    ├── src/
-    │   ├── components/      # Reusable components
-    │   ├── pages/           # Page components
-    │   ├── redux/           # Redux store and slices
-    │   ├── services/        # API services
-    │   └── App.jsx
-    └── package.json
-```
 
-## Technologies Used
+Run the schema from `backend/database-schema.sql` in phpMyAdmin or MySQL Workbench.
 
-### Backend
-- **Spring Boot 3.2.1** - Main framework
-- **Spring Data JPA** - Data persistence
-- **Hibernate** - ORM
-- **SQL Server** - Database
-- **ModelMapper** - DTO mapping
-- **Lombok** - Boilerplate code reduction
-- **Maven** - Build tool
+### 2️⃣ Backend Setup
 
-### Frontend
-- **React 18** - UI library
-- **Redux Toolkit** - State management
-- **React Router** - Navigation
-- **Axios** - HTTP client
-- **Tailwind CSS** - Styling
-- **Vite** - Build tool
-
-## Features
-
-### Screen 1: Sales Order Form
-- Customer selection with auto-populated address fields
-- Editable address fields
-- Dynamic item selection via dropdown (Item Code or Description)
-- Automatic calculation of:
-  - Excl Amount = Quantity × Price
-  - Tax Amount = Excl Amount × Tax Rate / 100
-  - Incl Amount = Excl Amount + Tax Amount
-- Multiple items per order
-- Total calculations (Total Excl, Total Tax, Total Incl)
-- Create new orders
-- Edit existing orders
-
-### Screen 2: Home Page
-- List all sales orders
-- Add new order button
-- Double-click to view/edit orders
-- Display key order information in a table
-
-## Setup Instructions
-
-### Database Setup
-
-1. Install SQL Server
-
-2. Run the database schema script:
 ```bash
 cd backend
-sqlcmd -S localhost -U sa -P YourPassword123 -i database-schema.sql
-```
-
-Or execute the `database-schema.sql` file in SQL Server Management Studio.
-
-### Backend Setup
-
-1. Navigate to backend directory:
-```bash
-cd backend
-```
-
-2. Update database credentials in `src/main/resources/application.properties`:
-```properties
-spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=SalesOrderDB;encrypt=true;trustServerCertificate=true
-spring.datasource.username=sa
-spring.datasource.password=YourPassword123
-```
-
-3. Build and run the application:
-```bash
 mvn clean install
 mvn spring-boot:run
 ```
 
-The backend will start on `http://localhost:8080`
+Backend runs on `http://localhost:8080`
 
-### Frontend Setup
+### 3️⃣ Frontend Setup
 
-1. Navigate to frontend directory:
 ```bash
 cd frontend
-```
-
-2. Install dependencies:
-```bash
 npm install
-```
-
-3. Start the development server:
-```bash
 npm run dev
 ```
 
-The frontend will start on `http://localhost:3000`
+Frontend runs on `http://localhost:3000`
 
-## API Endpoints
+## 📋 Database Configuration
 
-### Clients
-- `GET /api/clients` - Get all clients
-- `GET /api/clients/{id}` - Get client by ID
-- `POST /api/clients` - Create new client
-- `PUT /api/clients/{id}` - Update client
-- `DELETE /api/clients/{id}` - Delete client
+Update `backend/src/main/resources/application.properties`:
 
-### Items
-- `GET /api/items` - Get all items
-- `GET /api/items/{id}` - Get item by ID
-- `POST /api/items` - Create new item
-- `PUT /api/items/{id}` - Update item
-- `DELETE /api/items/{id}` - Delete item
-
-### Sales Orders
-- `GET /api/sales-orders` - Get all sales orders
-- `GET /api/sales-orders/{id}` - Get sales order by ID
-- `POST /api/sales-orders` - Create new sales order
-- `PUT /api/sales-orders/{id}` - Update sales order
-- `DELETE /api/sales-orders/{id}` - Delete sales order
-
-## Database Schema
-
-### Tables
-- `clients` - Customer information
-- `items` - Product/service catalog
-- `sales_orders` - Sales order headers
-- `sales_order_items` - Sales order line items
-
-## Architecture
-
-### Backend Architecture (Layered/N-Tier)
-```
-Controller Layer (API) → Service Layer (Business Logic) → Repository Layer (Data Access) → Database
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/SalesOrderDB
+spring.datasource.username=root
+spring.datasource.password=
 ```
 
-### Frontend Architecture
+## 🏗️ Tech Stack
+
+**Backend:** Spring Boot, JPA/Hibernate, MySQL  
+**Frontend:** React, Redux Toolkit, Tailwind CSS, Axios  
+**Build Tools:** Maven, Vite
+
+## 📸 Screenshots
+
+### Home Page
+Lists all sales orders with search and filtering capabilities.
+
+### Sales Order Form
+Create/edit orders with automatic calculations and dynamic item management.
+
+## 📚 API Documentation
+
+Full API documentation available in `API_DOCUMENTATION.md`
+
+**Base URL:** `http://localhost:8080/api`
+
+- `/clients` - Customer management
+- `/items` - Product catalog
+- `/sales-orders` - Order management
+
+## 🗂️ Project Structure
+
 ```
-Components → Redux Store → API Services → Backend
+├── backend/          # Spring Boot (N-Tier Architecture)
+│   ├── controller/   # REST API endpoints
+│   ├── service/      # Business logic
+│   ├── repository/   # Data access
+│   ├── domain/       # JPA entities
+│   └── dto/          # Data transfer objects
+│
+└── frontend/         # React application
+    ├── pages/        # Main screens
+    ├── redux/        # State management
+    └── services/     # API integration
 ```
 
-## Development Notes
+## ⚙️ Configuration
 
-- The backend follows Spring Boot best practices with clear separation of concerns
-- DTOs are used for data transfer between layers
-- Frontend uses Redux Toolkit for centralized state management
-- Tailwind CSS provides a responsive and modern UI
-- All calculations are performed client-side with validation
+### MySQL (Default)
+Uses XAMPP MySQL on port 3306
 
-## Sample Data
+### SQL Server (Alternative)
+See `SETUP_GUIDE.md` for SQL Server configuration
 
-The database initialization script includes sample data:
-- 5 sample clients
-- 10 sample items with various prices
+## 🧪 Testing
 
-## Future Enhancements
+1. Open `http://localhost:3000`
+2. Click "Add New" to create a sales order
+3. Select customer, add items, and save
+4. View saved orders on the home page
 
-- Print/PDF generation for sales orders
-- User authentication and authorization
-- Order status tracking
-- Inventory management
-- Reporting and analytics
-- Email notifications
-- Export to Excel/CSV
+## 📖 Documentation
 
-## License
+- `SETUP_GUIDE.md` - Detailed setup instructions
+- `API_DOCUMENTATION.md` - Complete API reference
+- `PROJECT_SUMMARY.md` - Implementation details
 
-This project is for educational purposes.
 
-## Contact
+## 📝 License
 
-For questions or support, please contact SPIL Labs (Pvt) Ltd.
+Educational use only.
+
+## 🆘 Troubleshooting
+
+**Port conflict?** Change ports in configuration files  
+**Database connection failed?** Check MySQL is running and credentials are correct  
+**Build errors?** Ensure Java 17+ and Maven are installed
+
+For detailed troubleshooting, see `SETUP_GUIDE.md`
+
+---
+
