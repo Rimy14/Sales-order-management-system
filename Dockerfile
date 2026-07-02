@@ -8,7 +8,7 @@ COPY backend/src ./backend/src
 RUN mvn -f backend/pom.xml clean package -DskipTests
 
 # Stage 2: Run the application
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/backend/target/sales-order-backend-1.0.0.jar app.jar
 EXPOSE 8080
