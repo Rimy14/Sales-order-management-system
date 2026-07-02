@@ -226,7 +226,7 @@ const SalesOrderPage = () => {
   }
 
   return (
-    <div className="min-h-screen px-8 py-7 animate-fade-in">
+    <div className="min-h-screen px-4 py-5 md:px-8 md:py-7 animate-fade-in">
       {/* Success Toast */}
       {showSuccess && (
         <div className="fixed top-6 right-6 z-50 animate-slide-down">
@@ -308,7 +308,7 @@ const SalesOrderPage = () => {
                     placeholder="Street address"
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="form-label">Address Line 2</label>
                     <input
@@ -332,7 +332,7 @@ const SalesOrderPage = () => {
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="form-label">State</label>
                     <input
@@ -573,9 +573,9 @@ const SalesOrderPage = () => {
         </div>
 
         {/* Totals & Actions */}
-        <div className="flex items-start justify-between gap-6">
+        <div className="flex flex-col-reverse md:flex-row items-stretch md:items-start justify-between gap-6">
           {/* Action Buttons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 w-full md:w-auto justify-end md:justify-start">
             <button
               id="save-order-btn"
               type="submit"
@@ -607,7 +607,7 @@ const SalesOrderPage = () => {
           </div>
 
           {/* Totals Card */}
-          <div className="bg-white rounded-2xl border border-surface-100 shadow-soft w-80 overflow-hidden">
+          <div className="bg-white rounded-2xl border border-surface-100 shadow-soft w-full md:w-80 overflow-hidden">
             <div className="px-5 py-3 bg-surface-50/80 border-b border-surface-100">
               <span className="text-xs font-semibold text-surface-500 uppercase tracking-wider">Order Summary</span>
             </div>
